@@ -1,5 +1,4 @@
 # ignite
 
 Huei Ming
-
-<br />Cassandra
+Cassandra
