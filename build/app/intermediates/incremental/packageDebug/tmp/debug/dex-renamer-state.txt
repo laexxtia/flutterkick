@@ -1,4 +1,4 @@
-#Wed Sep 21 00:50:51 SGT 2022
+#Thu Sep 22 21:17:53 SGT 2022
 base.0=/Users/hueiming/Documents/flutterkick/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
