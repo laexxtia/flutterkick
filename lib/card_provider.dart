@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/user.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 enum CardStatus { like, dislike, superLike }
 
 class CardProvider extends ChangeNotifier {
-  List<String> _urlImages = [];
+  List<User> _userDetails = [];
   bool _isDragging = false;
   double _angle = 0;
   Offset _position = Offset.zero;
   Size _screenSize = Size.zero;
 
-  List<String> get urlImages => _urlImages;
+  List<User> get userDetails => _userDetails;
   bool get isDragging => _isDragging;
   Offset get position => _position;
   double get angle => _angle;
@@ -46,6 +47,7 @@ class CardProvider extends ChangeNotifier {
       Fluttertoast.cancel();
       Fluttertoast.showToast(
         msg: status.toString().split('.').last.toUpperCase(),
+        gravity: ToastGravity.TOP,
         fontSize: 36,
       );
     }
@@ -114,22 +116,50 @@ class CardProvider extends ChangeNotifier {
   }
 
   Future _nextCard() async {
-    if (_urlImages.isEmpty) return;
+    if (_userDetails.isEmpty) return;
 
     await Future.delayed(Duration(milliseconds: 200));
-    _urlImages.removeLast();
+    _userDetails.removeLast();
     resetPosition();
   }
 
   void resetUsers() {
-    _urlImages = <String>[
-      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      "https://images.pexels.com/photos/937481/pexels-photo-937481.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      "https://images.pexels.com/photos/38554/girl-people-landscape-sun-38554.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    _userDetails = <User>[
+      User(
+          name: "John",
+          position: "Mentor",
+          profilePic: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      ),
+      User(
+        name: "Lisa",
+        position: "Mentor",
+        profilePic: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      ),
+      User(
+        name: "Caleb",
+        position: "Mentor",
+        profilePic: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      ),
+      User(
+        name: "Sarah",
+        position: "Mentor",
+        profilePic: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      ),
+      User(
+        name: "Frances",
+        position: "Mentor",
+        profilePic: "https://images.pexels.com/photos/937481/pexels-photo-937481.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      ),
+      User(
+        name: "David",
+        position: "Mentor",
+        profilePic: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      ),
+      User(
+        name: "Marilyn",
+        position: "Mentor",
+        profilePic: "https://images.pexels.com/photos/38554/girl-people-landscape-sun-38554.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      ),
     ].reversed.toList();
 
     notifyListeners();

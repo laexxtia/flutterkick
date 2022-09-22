@@ -5,10 +5,14 @@ import 'card_provider.dart';
 
 class MentorCard extends StatefulWidget {
   final String urlImage;
+  final String name;
+  final String position;
   final bool isFront;
   const MentorCard({
     Key? key,
     required this.urlImage,
+    required this.name,
+    required this.position,
     required this.isFront,
   }) : super(key: key);
 
@@ -75,8 +79,30 @@ class _MentorCardState extends State<MentorCard> {
     child: Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: NetworkImage(widget.urlImage),
+          image: NetworkImage(widget.urlImage.toString()),
           fit: BoxFit.cover,
+        ),
+      ),
+      child:
+        Align(
+          alignment: FractionalOffset.bottomCenter,
+          child: Padding(
+            padding: EdgeInsets.only(bottom: 10.0),
+            child: Container(
+              width: 350,
+              decoration: BoxDecoration(
+                color: Colors.white70,
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+              ),
+              child: Text(
+                widget.name.toString(),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                ),
+              ),
+            ),
         ),
       ),
     ),
@@ -106,9 +132,9 @@ class _MainPageState extends State<MainPage> {
 
   Widget buildCards() {
     final provider = Provider.of<CardProvider>(context);
-    final urlImages = provider.urlImages;
+    final userDetails = provider.userDetails;
 
-    return urlImages.isEmpty
+    return userDetails.isEmpty
         ? Center(
         child: ElevatedButton(
           child: Text('Restart'),
@@ -120,11 +146,13 @@ class _MainPageState extends State<MainPage> {
         ))
 
         : Stack(
-      children: urlImages
-          .map((urlImage) =>
+      children: userDetails
+          .map((user) =>
           MentorCard(
-            urlImage: urlImage,
-            isFront: urlImages.last == urlImage,
+            name: user.name.toString(),
+            position: user.position.toString(),
+            urlImage: user.profilePic.toString(),
+            isFront: userDetails.last == user,
           ))
           .toList(),
     );
