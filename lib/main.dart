@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'card_provider.dart';
 import 'package:provider/provider.dart';
 import 'main_cards.dart';
+import 'profile_screen.dart';
 
 void main() {
   runApp(MyApp());
