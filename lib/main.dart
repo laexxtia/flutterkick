@@ -14,9 +14,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => ChangeNotifierProvider (
     create: (context) => CardProvider(),
-    child: const MaterialApp(
+    child: MaterialApp(
       debugShowCheckedModeBanner: false,
       title: title,
+      theme: ThemeData(
+        primaryColor: Colors.pink,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            elevation: 8,
+            backgroundColor: Colors.white,
+            shape: CircleBorder(),
+            minimumSize: Size.square(70),
+          ),
+        ),
+      ),
       home: MainPage(),
     ),
   );
