@@ -361,7 +361,9 @@ class _MainPageState extends State<MainPage> {
     return userDetails.isEmpty
         ? Center(
         child: ElevatedButton(
-          child: Text('Restart'),
+          child: Text('Restart', style: TextStyle(
+              color: Colors.black,
+          )),
           onPressed: () {
             final provider = Provider.of<CardProvider>(context, listen: false);
 
