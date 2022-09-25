@@ -46,12 +46,12 @@ class CardProvider extends ChangeNotifier {
     final status = getStatus(force: true);
 
     if (status != null) {
-      Fluttertoast.cancel();
-      Fluttertoast.showToast(
-        msg: status.toString().split('.').last.toUpperCase(),
-        gravity: ToastGravity.TOP,
-        fontSize: 36,
-      );
+      // Fluttertoast.cancel();
+      // Fluttertoast.showToast(
+      //   msg: status.toString().split('.').last.toUpperCase(),
+      //   gravity: ToastGravity.TOP,
+      //   fontSize: 36,
+      // );
     }
 
     switch (status) {
