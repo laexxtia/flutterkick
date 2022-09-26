@@ -74,6 +74,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "intl",
+      "rootUri": "file:///Users/hueiming/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "js",
       "rootUri": "file:///Users/hueiming/.pub-cache/hosted/pub.dartlang.org/js-0.6.4",
       "packageUri": "lib/",
@@ -152,6 +158,24 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "syncfusion_flutter_calendar",
+      "rootUri": "file:///Users/hueiming/.pub-cache/hosted/pub.dartlang.org/syncfusion_flutter_calendar-20.2.50",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "syncfusion_flutter_core",
+      "rootUri": "file:///Users/hueiming/.pub-cache/hosted/pub.dartlang.org/syncfusion_flutter_core-20.2.50",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "syncfusion_flutter_datepicker",
+      "rootUri": "file:///Users/hueiming/.pub-cache/hosted/pub.dartlang.org/syncfusion_flutter_datepicker-20.2.50",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "term_glyph",
       "rootUri": "file:///Users/hueiming/.pub-cache/hosted/pub.dartlang.org/term_glyph-1.2.1",
       "packageUri": "lib/",
@@ -162,6 +186,12 @@
       "rootUri": "file:///Users/hueiming/.pub-cache/hosted/pub.dartlang.org/test_api-0.4.14",
       "packageUri": "lib/",
       "languageVersion": "2.18"
+    },
+    {
+      "name": "timezone",
+      "rootUri": "file:///Users/hueiming/.pub-cache/hosted/pub.dartlang.org/timezone-0.8.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "vector_math",
@@ -176,7 +206,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2022-09-25T16:16:03.723851Z",
+  "generated": "2022-09-26T12:25:30.221840Z",
   "generator": "pub",
   "generatorVersion": "2.19.0-221.0.dev"
 }

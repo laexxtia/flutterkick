@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'calendar.dart';
+
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
@@ -15,6 +17,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         backgroundColor: Colors.transparent,
         centerTitle: true,
         title: Text("Profile"),
+        actions: [
+          calendarLogo(),
+        ],
       ),
       backgroundColor: const Color(0xff3a4738),
       body: SizedBox(
@@ -85,30 +90,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     topRight: Radius.circular(80),
                   ),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Text(
-                      "PROFILE",
-                      style: TextStyle(
-                        fontFamily: "Montserrat",
-                        color: Colors.black87,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "PROFILE",
+                        style: TextStyle(
+                          fontFamily: "Montserrat",
+                          color: Colors.black87,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 20,),
-                    listProfile(Icons.person, "Full Name", "Nicole Lee"),
-                    listProfile(Icons.domain, "Company", "Google"),
-                    listProfile(Icons.female, "Gender", "Female"),
-                    listProfile(Icons.phone, "About",
-                        "Being a software engineer with 6 \nyears of extensive experience, "
-                            "I want \nto reach out to help incoming batches \nof aspiring "
-                            "software engineers to pursue \ntheir passions."),
-                    listProfile(Icons.edit_note_rounded, "Experiences",
-                        "- Worked with... \n -Had..."),
-                    listProfile(Icons.group, "LinkedIn", "www.linkedin.com/in/nicole-lee/"),
-                  ],
+                      const SizedBox(height: 20,),
+                      listProfile(Icons.person, "Full Name", "Nicole Lee"),
+                      listProfile(Icons.domain, "Company", "Google"),
+                      listProfile(Icons.female, "Gender", "Female"),
+                      listProfile(Icons.phone, "About",
+                          "Being a software engineer with 6 \nyears of extensive experience, "
+                              "I want \nto reach out to help incoming batches \nof aspiring "
+                              "software engineers to pursue \ntheir passions."),
+                      listProfile(Icons.edit_note_rounded, "Experiences",
+                          "- Worked with... \n -Had..."),
+                      listProfile(Icons.group, "LinkedIn", "www.linkedin.com/in/nicole-lee/"),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -117,6 +124,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
     );
   }
+
+  Widget calendarLogo() => IconButton(
+    icon: Icon(Icons.calendar_month, size: 30),
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Calendar()),
+      );
+    },
+  );
 
   Widget listProfile(IconData icon, String text1, String text2) {
     return Container(

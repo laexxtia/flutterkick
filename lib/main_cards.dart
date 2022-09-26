@@ -90,26 +90,34 @@ class _MentorCardState extends State<MentorCard> {
           alignment: Alignment(-0.3, 0),
         ),
       ),
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.transparent, Colors.black],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            stops: [0.7, 1],
-          ),
-        ),
-        child: Container (
-         padding: EdgeInsets.all(20),
-         child: Column(
-           children: [
-             Spacer(),
-             buildName(),
-             const SizedBox(height: 8),
-             buildStatus(),
-           ],
-         ),
-        ),
+      child: new InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ProfileScreen()),
+          );
+        },
+        child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.transparent, Colors.black],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                stops: [0.7, 1],
+              ),
+            ),
+            child: Container (
+              padding: EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  Spacer(),
+                  buildName(),
+                  const SizedBox(height: 8),
+                  buildStatus(),
+                ],
+              ),
+            ),
+        )
       ),
       // child:
       //   Align(
@@ -154,27 +162,6 @@ class _MentorCardState extends State<MentorCard> {
             color: Colors.white,
           ),
         ),
-        Expanded(
-          child: TextButton.icon(
-            icon: Column(
-              children: [
-                Icon(Icons.account_circle, size: 40, color: Colors.white),
-                Text("Profile",
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-              ],
-            ),
-            label: Text(""),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ProfileScreen()),
-              );
-            },
-          ),
-        ),
       ],
     );
 
@@ -206,7 +193,7 @@ class _MentorCardState extends State<MentorCard> {
         final child = buildStamp(
             angle: -0.5,
             color: Colors.green,
-            text: "LIKE",
+            text: "YES",
             opacity: opacity,
           );
         return Positioned(top: 64, left: 50, child: child);
@@ -288,7 +275,8 @@ class _MainPageState extends State<MainPage> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           centerTitle: true,
-          title: Text("Mentor Finders"),
+          title: Text("Mentor Finder"),
+          leading: buildLogo(),
           actions: [
             profileLogo(),
           ],
