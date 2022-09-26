@@ -39,7 +39,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       bottom: 8,
                     ),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Colors.grey,
                       borderRadius: BorderRadius.circular(70),
                       boxShadow: const [
                         BoxShadow(
@@ -49,9 +49,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ],
                       image: const DecorationImage(
-                        image: AssetImage(
-                          "",
+                        image: NetworkImage(
+                          "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1600",
                         ),
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
@@ -90,31 +91,36 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     topRight: Radius.circular(80),
                   ),
                 ),
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Text(
-                        "PROFILE",
-                        style: TextStyle(
-                          fontFamily: "Montserrat",
-                          color: Colors.black87,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
+                child: Scrollbar(
+                  thumbVisibility: true, //always show scrollbar
+                  thickness: 10, //width of scrollbar
+                  radius: Radius.circular(20), //corner radius of scrollbar
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "PROFILE",
+                          style: TextStyle(
+                            fontFamily: "Montserrat",
+                            color: Colors.black87,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 20,),
-                      listProfile(Icons.person, "Full Name", "Nicole Lee"),
-                      listProfile(Icons.domain, "Company", "Google"),
-                      listProfile(Icons.female, "Gender", "Female"),
-                      listProfile(Icons.phone, "About",
-                          "Being a software engineer with 6 \nyears of extensive experience, "
-                              "I want \nto reach out to help incoming batches \nof aspiring "
-                              "software engineers to pursue \ntheir passions."),
-                      listProfile(Icons.edit_note_rounded, "Experiences",
-                          "- Worked with... \n -Had..."),
-                      listProfile(Icons.group, "LinkedIn", "www.linkedin.com/in/nicole-lee/"),
-                    ],
+                        const SizedBox(height: 20,),
+                        listProfile(Icons.person, "Full Name", "Nicole Lee"),
+                        listProfile(Icons.domain, "Company", "Google"),
+                        listProfile(Icons.female, "Gender", "Female"),
+                        listProfile(Icons.phone, "About",
+                            "Being a software engineer with 6 \nyears of extensive experience, "
+                                "I want \nto reach out to help incoming batches \nof aspiring "
+                                "software engineers to pursue \ntheir passions."),
+                        listProfile(Icons.edit_note_rounded, "Experiences",
+                            "- Worked with... \n -Had..."),
+                        listProfile(Icons.group, "LinkedIn", "www.linkedin.com/in/nicole-lee/"),
+                      ],
+                    ),
                   ),
                 ),
               ),
