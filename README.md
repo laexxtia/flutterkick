@@ -6,7 +6,8 @@
 
 ## Our Solution:
 We've developed a Flutter based solution app called MentorMe, which will help you find the mentor best suited to your needs no matter where you are.
+<br/>
+<img src="https://github.com/laexxtia/flutterkick/blob/main/flutter_01.png?raw=true" width="200px" />
 
 ## Team Members:
 Huei Ming <br />Cassandra <br />Abiya <br />Laetitia <br />Rachel
-
