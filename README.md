@@ -1,7 +1,7 @@
 # MentorMe App
 
 ## Problem statement: 
-* Reduced Inequalities
+### Reduced Inequalities as one of 17 UN Sustainable Development Goals
 <img src="https://user-images.githubusercontent.com/61011188/192708066-791da16e-d2af-4ab1-8c98-563ed457ed2a.png" width="100px"/>
 
 ## Our Solution:
