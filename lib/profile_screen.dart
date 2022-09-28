@@ -21,7 +21,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           calendarLogo(),
         ],
       ),
-      backgroundColor: const Color(0xff3a4738),
+      backgroundColor: const Color(0xfff07d33),
       body: SizedBox(
         width: double.infinity,
         child: Column(

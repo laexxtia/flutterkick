@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'mentormentee.dart';
 class LoginSignup extends StatefulWidget {
   const LoginSignup({Key? key}) : super(key: key);
 
@@ -19,7 +21,12 @@ class _LoginSignupState extends State<LoginSignup> {
               margin: EdgeInsets.all(5),
               child: FloatingActionButton(
                 child: Text('SignUp', style: TextStyle(fontSize: 15.0),),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>  MoM()),
+                  );
+                },
               ),
 
 
