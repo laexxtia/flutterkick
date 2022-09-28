@@ -12,10 +12,11 @@ class MoM extends StatefulWidget {
 class _MoMState extends State<MoM> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
           appBar: AppBar(
+            centerTitle: true,
             title: Text('Flutter MoM Example'),
+            backgroundColor: const Color(0xfff07d33),
           ),
           body:
           Center(child: Column(children: <Widget>[
@@ -80,7 +81,6 @@ class _MoMState extends State<MoM> {
             // ),
           ]
           ))
-      ),
-    );
+      );
   }
 }

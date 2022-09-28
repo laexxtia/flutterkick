@@ -14,31 +14,60 @@ class _LoginSignupState extends State<LoginSignup> {
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
-            title: Text('Flutter LoginSignup'),
+            centerTitle: true,
+            title: Text('Appname'),
+            backgroundColor: const Color(0xfff07d33),
           ),
           body: Center(child: Column(children: <Widget>[
             Container(
-              margin: EdgeInsets.all(5),
-              child: FloatingActionButton(
-                child: Text('SignUp', style: TextStyle(fontSize: 15.0),),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) =>  MoM()),
-                  );
-                },
-              ),
 
-
-            ),
-            Container(
               margin: EdgeInsets.all(5),
-              child: FloatingActionButton(
-                child: Text('LogIn', style: TextStyle(fontSize: 15.0),),
-                // color: Colors.blueAccent,
-                // textColor: Colors.white,
-                onPressed: () {},
-              ),
+                child: new Column(
+                  children: [
+                    Text('Welcome to Our Application'),
+
+                    new Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            shape: StadiumBorder(),
+                            side: BorderSide(
+                                width: 2,
+                                color: Colors.black
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) =>  MoM()),
+                            );
+                          },
+                          child: Text(' Sign Up '),
+                        ),
+
+                        OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            shape: StadiumBorder(),
+                            side: BorderSide(
+                                width: 2,
+                                color: Colors.black
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => MoM()),
+                            );
+                          },
+                          child: Text(' Login '),
+                        )
+
+                      ],
+                    )
+                  ],
+                )
             ),
           ]
           ))
