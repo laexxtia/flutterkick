@@ -12,6 +12,7 @@ class _LoginSignupState extends State<LoginSignup> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
           appBar: AppBar(
             centerTitle: true,
@@ -20,12 +21,10 @@ class _LoginSignupState extends State<LoginSignup> {
           ),
           body: Center(child: Column(children: <Widget>[
             Container(
-
               margin: EdgeInsets.all(5),
                 child: new Column(
                   children: [
                     Text('Welcome to Our Application'),
-
                     new Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,

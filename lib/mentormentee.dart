@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/main_cards.dart';
+import 'package:flutter_project/page/edit_profile_page.dart';
+import 'package:flutter_project/page/profile_page.dart';
 import 'main.dart';
 
 class MoM extends StatefulWidget {
@@ -43,7 +45,7 @@ class _MoMState extends State<MoM> {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) =>  MainPage()),
+                            MaterialPageRoute(builder: (context) =>  EditProfilePage()),
                           );
                         },
                         child: Text(' Mentor '),
@@ -60,27 +62,19 @@ class _MoMState extends State<MoM> {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => MainPage()),
+                            MaterialPageRoute(builder: (context) => EditProfilePage()),
                           );
                         },
                         child: Text('Mentee'),
-                      )
-
+                      ),
                     ],
                   )
                 ],
-              )
-
-
-
-
+              ),
             ),
-            // Container(
-            //   margin: EdgeInsets.all(5),
-            //
-            // ),
           ]
-          ))
+          )
+        ),
       );
   }
 }
