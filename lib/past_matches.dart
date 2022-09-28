@@ -35,9 +35,9 @@ class _ListViewHomeState extends State<ListViewHome> {
           padding: const EdgeInsets.all(8),
           itemCount: passedNames?.length,
           itemBuilder: (BuildContext context, int index) {
-            if (passedNames != null) {
+            // if (passedNames != null) {
               return Text(passedNames![index]);
-            }
+            // }
           },
           // children: <Widget>[
           //   ListTile(
