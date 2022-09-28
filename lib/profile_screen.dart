@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/user.dart';
+import 'package:provider/provider.dart';
 
 import 'calendar.dart';
+import 'card_provider.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  String id;
+  ProfileScreen({Key? key, required this.id}) : super(key: key);
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<ProfileScreen> createState() => _ProfileScreenState(id);
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  String id;
+  _ProfileScreenState(this.id);
+
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<CardProvider>(context);
+    final userDetails = provider.userDetails;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -48,16 +58,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           // blurRadius: 10,
                         ),
                       ],
-                      image: const DecorationImage(
+                      image: DecorationImage(
                         image: NetworkImage(
-                          "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1600",
+                          userDetails[userDetails.length-1].profilePic.toString(),
                         ),
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
-                  const Text(
-                    "Nicole",
+                  Text(
+                    userDetails[userDetails.length-1].name.toString(),
                     style: TextStyle(
                       fontFamily: "Montserrat",
                       color: Colors.white,
@@ -65,8 +75,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       fontSize: 18,
                     ),
                   ),
-                  const Text(
-                    "Senior Software Engineer, Mentor",
+                  Text(
+                    userDetails[userDetails.length-1].industry.toString(),
                     style: TextStyle(
                       fontFamily: "Montserrat",
                       color: Colors.white70,
@@ -109,9 +119,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                         const SizedBox(height: 20,),
-                        listProfile(Icons.person, "Full Name", "Nicole Lee"),
+                        listProfile(Icons.person, "Full Name", userDetails[userDetails.length-1].name.toString(),
+                        ),
                         listProfile(Icons.domain, "Company", "Google"),
-                        listProfile(Icons.female, "Gender", "Female"),
+                        listProfile(Icons.female, "Gender", userDetails[userDetails.length-1].gender.toString()),
                         listProfile(Icons.phone, "About",
                             "Being a software engineer with 6 \nyears of extensive experience, "
                                 "I want \nto reach out to help incoming batches \nof aspiring "

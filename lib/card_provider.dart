@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_project/user.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 enum CardStatus { like, dislike, superLike }
 
@@ -39,7 +40,7 @@ class CardProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void endPosition() {
+  Future<void> endPosition(names) async {
     _isDragging = false;
     notifyListeners();
 
@@ -57,6 +58,8 @@ class CardProvider extends ChangeNotifier {
     switch (status) {
       case CardStatus.like:
         like();
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setStringList("passedNames", names);
         break;
       case CardStatus.dislike:
         dislike();
@@ -149,39 +152,60 @@ class CardProvider extends ChangeNotifier {
   void resetUsers() {
     _userDetails = <User>[
       User(
-          name: "John",
-          position: "Mentor",
-          profilePic: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        id: "0",
+        name: "John",
+        position: "Mentor",
+        profilePic: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        industry: "Business",
+        gender: "Male"
       ),
       User(
+        id: "1",
         name: "Nicole",
         position: "Mentor",
         profilePic: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        industry: "Software Engineer",
+        gender: "Female"
       ),
       User(
+        id: "2",
         name: "Caleb",
         position: "Mentor",
         profilePic: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        industry: "Software Engineer",
+        gender: "Male"
       ),
       User(
+        id: "3",
         name: "Sarah",
         position: "Mentor",
         profilePic: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        industry: "Software Engineer",
+        gender: "Female"
       ),
       User(
+        id: "4",
         name: "Frances",
         position: "Mentor",
         profilePic: "https://images.pexels.com/photos/937481/pexels-photo-937481.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        industry: "Business",
+        gender: "Male"
       ),
       User(
+        id: "5",
         name: "David",
         position: "Mentor",
         profilePic: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        industry: "Healthcare",
+        gender: "Male"
       ),
       User(
+        id: "6",
         name: "Marilyn",
         position: "Mentor",
         profilePic: "https://images.pexels.com/photos/38554/girl-people-landscape-sun-38554.jpeg?auto=compress&cs=tinysrgb&w=1600",
+        industry: "Healthcare",
+        gender: "Female"
       ),
     ].reversed.toList();
 

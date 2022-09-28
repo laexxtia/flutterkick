@@ -1,27 +1,178 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/curr_user_profile_screen.dart';
+import 'package:flutter_project/past_matches.dart';
 import 'package:flutter_project/profile_screen.dart';
 import 'dart:math';
 import 'package:provider/provider.dart';
 import 'card_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+
+class MainPage extends StatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  @override
+  Widget build(BuildContext context) => Container(
+    decoration: BoxDecoration(
+      gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color(0xfff07d33),
+            Colors.black,
+          ]
+      ),
+    ),
+    child: Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
+        title: Text("Mentor Finder"),
+        leading: buildLogo(),
+        actions: [
+          profileLogo(),
+        ],
+      ),
+      backgroundColor: Colors.transparent,
+      body: SafeArea(
+        child: Container(
+          alignment: Alignment.center,
+          padding: EdgeInsets.all(16),
+          child: Column(
+            children:[
+              const SizedBox(height: 16),
+              Expanded(child: buildCards()),
+              const SizedBox(height: 16),
+              buildButtons(),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+
+  Widget buildLogo() => IconButton(
+    icon: Icon(Icons.message, size: 30),
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ListViewHome()),
+      );
+    },
+  );
+
+  Widget profileLogo() => IconButton(
+    icon: Icon(Icons.account_circle, size: 30),
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => CurrProfileScreen()),
+      );
+    },
+  );
+
+  Widget buildButtons() => Row(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
+      ElevatedButton(
+        child: Icon(Icons.clear, color: Colors.red, size: 32),
+        onPressed: () {
+          final provider = Provider.of<CardProvider>(context, listen: false);
+          provider.dislike();
+        },
+      ),
+      ElevatedButton(
+        child: Icon(Icons.star, color: Colors.blue, size: 32),
+        onPressed: () {
+          final provider = Provider.of<CardProvider>(context, listen: false);
+          provider.superLike();
+        },
+      ),
+      ElevatedButton(
+        child: Icon(Icons.favorite, color: Colors.teal, size: 32),
+        onPressed: () {
+          final provider = Provider.of<CardProvider>(context, listen: false);
+          provider.like();
+        },
+      ),
+    ],
+  );
+
+  Widget buildCards() {
+    final provider = Provider.of<CardProvider>(context);
+    final userDetails = provider.userDetails;
+
+    return userDetails.isEmpty
+        ? Center(
+        child: ElevatedButton(
+          child: const Text('Restart', style: TextStyle(
+            color: Colors.black,
+          )),
+          onPressed: () {
+            final provider = Provider.of<CardProvider>(context, listen: false);
+
+            provider.resetUsers();
+          },
+        ))
+
+        : Stack(
+      children: userDetails
+          .map((user) =>
+          MentorCard(
+            id: user.id.toString(),
+            name: user.name.toString(),
+            position: user.position.toString(),
+            urlImage: user.profilePic.toString(),
+            gender: user.gender.toString(),
+            names: [],
+            isFront: userDetails.last == user,
+          ))
+          .toList(),
+    );
+  }
+}
 
 class MentorCard extends StatefulWidget {
+  final String id;
   final String urlImage;
   final String name;
+  final String gender;
   final String position;
+  final List<String> names;
   final bool isFront;
   const MentorCard({
     Key? key,
+    required this.id,
     required this.urlImage,
     required this.name,
+    required this.gender,
     required this.position,
+    required this.names,
     required this.isFront,
   }) : super(key: key);
 
   @override
-  State<MentorCard> createState() => _MentorCardState();
+  State<MentorCard> createState() => _MentorCardState(id, names);
 }
 
 class _MentorCardState extends State<MentorCard> {
+
+  String id;
+  List<String>? names = [];
+  _MentorCardState(this.id, this.names);
+
+  getData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      names = prefs.getStringList('passedNames');
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -74,81 +225,62 @@ class _MentorCardState extends State<MentorCard> {
       final provider = Provider.of<CardProvider>(context, listen: false);
       provider.updatePosition(details);
     },
-    onPanEnd: (details) {
+    onPanEnd: (details) async {
       final provider = Provider.of<CardProvider>(context, listen: false);
-      provider.endPosition();
+      names?.add(widget.name);
+      print(names);
+      provider.endPosition(names);
     },
   );
 
-  Widget buildCard() => ClipRRect(
-    borderRadius: BorderRadius.circular(20),
-    child: Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: NetworkImage(widget.urlImage.toString()),
-          fit: BoxFit.cover,
-          alignment: Alignment(-0.3, 0),
+  Widget buildCard() {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(widget.urlImage.toString()),
+            fit: BoxFit.cover,
+            alignment: Alignment(-0.3, 0),
+          ),
+        ),
+        child: InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfileScreen(id: id)),
+              );
+            },
+            child: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.transparent, Colors.black],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: [0.7, 1],
+                ),
+              ),
+              child: Container(
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    Spacer(),
+                    buildName(),
+                    const SizedBox(height: 8),
+                    buildStatus(),
+                  ],
+                ),
+              ),
+            )
         ),
       ),
-      child: new InkWell(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ProfileScreen()),
-          );
-        },
-        child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Colors.transparent, Colors.black],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                stops: [0.7, 1],
-              ),
-            ),
-            child: Container (
-              padding: EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  Spacer(),
-                  buildName(),
-                  const SizedBox(height: 8),
-                  buildStatus(),
-                ],
-              ),
-            ),
-        )
-      ),
-      // child:
-      //   Align(
-      //     alignment: FractionalOffset.bottomCenter,
-      //     child: Padding(
-      //       padding: EdgeInsets.only(bottom: 10.0),
-      //       child: Container(
-      //         width: 350,
-      //         decoration: BoxDecoration(
-      //           color: Colors.white70,
-      //           borderRadius: BorderRadius.all(Radius.circular(20)),
-      //         ),
-      //         child: Text(
-      //           widget.name.toString(),
-      //           textAlign: TextAlign.center,
-      //           style: TextStyle(
-      //             fontWeight: FontWeight.bold,
-      //             fontSize: 24,
-      //           ),
-      //         ),
-      //       ),
-      //   ),
-      // ),
-    ),
-  );
-
+    );
+  }
   Widget buildName() => Row(
     children: [
       Text(
         '${widget.name.toString()} -',
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 32,
           color: Colors.white,
           fontWeight: FontWeight.bold,
@@ -157,7 +289,7 @@ class _MentorCardState extends State<MentorCard> {
       const SizedBox(width: 16),
       Text(
           '${widget.position.toString()}',
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 32,
             color: Colors.white,
           ),
@@ -168,7 +300,7 @@ class _MentorCardState extends State<MentorCard> {
   Widget buildStatus() => Row(
           children: [
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.green,
               ),
@@ -176,7 +308,7 @@ class _MentorCardState extends State<MentorCard> {
               height: 12,
             ),
             const SizedBox(width: 8),
-            Text (
+            const Text (
               "Recently Active",
               style: TextStyle(fontSize: 20, color: Colors.white),
               ),
@@ -246,129 +378,6 @@ class _MentorCardState extends State<MentorCard> {
           ),
         ),
       ),
-    );
-  }
-}
-
-
-class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
-
-  @override
-  State<MainPage> createState() => _MainPageState();
-}
-
-class _MainPageState extends State<MainPage> {
-  @override
-  Widget build(BuildContext context) => Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            Colors.red.shade200,
-            Colors.black,
-          ]
-        ),
-      ),
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          centerTitle: true,
-          title: Text("Mentor Finder"),
-          leading: buildLogo(),
-          actions: [
-            profileLogo(),
-          ],
-        ),
-        backgroundColor: Colors.transparent,
-        body: SafeArea(
-          child: Container(
-            alignment: Alignment.center,
-            padding: EdgeInsets.all(16),
-            child: Column(
-              children:[
-                const SizedBox(height: 16),
-                Expanded(child: buildCards()),
-                const SizedBox(height: 16),
-                buildButtons(),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-
-  Widget buildLogo() => IconButton(
-    icon: Icon(Icons.search, size: 30),
-    onPressed: () {
-    },
-  );
-
-  Widget profileLogo() => IconButton(
-    icon: Icon(Icons.account_circle, size: 30),
-    onPressed: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => ProfileScreen()),
-      );
-    },
-  );
-
-  Widget buildButtons() => Row(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    children: [
-      ElevatedButton(
-        child: Icon(Icons.clear, color: Colors.red, size: 32),
-        onPressed: () {
-          final provider = Provider.of<CardProvider>(context, listen: false);
-          provider.dislike();
-        },
-      ),
-      ElevatedButton(
-        child: Icon(Icons.star, color: Colors.blue, size: 32),
-        onPressed: () {
-          final provider = Provider.of<CardProvider>(context, listen: false);
-          provider.superLike();
-        },
-      ),
-      ElevatedButton(
-        child: Icon(Icons.favorite, color: Colors.teal, size: 32),
-        onPressed: () {
-          final provider = Provider.of<CardProvider>(context, listen: false);
-          provider.like();
-        },
-        ),
-      ],
-    );
-
-  Widget buildCards() {
-    final provider = Provider.of<CardProvider>(context);
-    final userDetails = provider.userDetails;
-
-    return userDetails.isEmpty
-        ? Center(
-        child: ElevatedButton(
-          child: Text('Restart', style: TextStyle(
-              color: Colors.black,
-          )),
-          onPressed: () {
-            final provider = Provider.of<CardProvider>(context, listen: false);
-
-            provider.resetUsers();
-          },
-        ))
-
-        : Stack(
-      children: userDetails
-          .map((user) =>
-          MentorCard(
-            name: user.name.toString(),
-            position: user.position.toString(),
-            urlImage: user.profilePic.toString(),
-            isFront: userDetails.last == user,
-          ))
-          .toList(),
     );
   }
 }

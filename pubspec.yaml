@@ -38,6 +38,7 @@ dependencies:
   provider: ^6.0.3
   fluttertoast: ^8.0.9
   syncfusion_flutter_calendar: ^20.2.50
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_test:
