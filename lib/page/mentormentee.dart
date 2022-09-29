@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/main_cards.dart';
+import 'package:flutter_project/page/main_cards.dart';
 import 'package:flutter_project/page/edit_profile_page.dart';
-import 'package:flutter_project/page/profile_page.dart';
-import 'main.dart';
+import 'package:flutter_project/page/test_profile_page.dart';
+import '../main.dart';
 
 class MoM extends StatefulWidget {
   const MoM({Key? key}) : super(key: key);

@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/second.dart';
-import 'card_provider.dart';
+import 'package:flutter_project/page/login_signup.dart';
+import 'page/card_provider.dart';
 import 'package:provider/provider.dart';
-import 'main_cards.dart';
-import 'profile_screen.dart';
-import 'package:flutter_project/mentormentee.dart';
-
 
 void main() {
   runApp(MyApp());

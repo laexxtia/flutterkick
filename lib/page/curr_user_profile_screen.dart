@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/mentor_user.dart';
+import 'package:flutter_project/model/mentor_user.dart';
 import 'package:provider/provider.dart';
 
 import 'calendar.dart';
@@ -25,7 +25,7 @@ class _CurrProfileScreenState extends State<CurrProfileScreen> {
           calendarLogo(),
         ],
       ),
-      backgroundColor: const Color(0xff3a4738),
+      backgroundColor: const Color(0xfff07d33),
       body: SizedBox(
         width: double.infinity,
         child: Column(

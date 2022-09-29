@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_project/main_cards.dart';
+import 'package:flutter_project/page/main_cards.dart';
 import 'package:path/path.dart';
 
-import '../mentor_user.dart';
+import '../model/mentor_user.dart';
 import '../model/user.dart';
 import '../utils/user_preferences.dart';
 import '../widget/appbar_widget.dart';

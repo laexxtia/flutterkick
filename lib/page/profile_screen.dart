@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/mentor_user.dart';
+import 'package:flutter_project/model/mentor_user.dart';
 import 'package:provider/provider.dart';
 
 import 'calendar.dart';
 import 'card_provider.dart';
 
 class ProfileScreen extends StatefulWidget {
-  String id;
-  ProfileScreen({Key? key, required this.id}) : super(key: key);
+  ProfileScreen({Key? key}) : super(key: key);
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState(id);
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  String id;
-  _ProfileScreenState(this.id);
 
   @override
   Widget build(BuildContext context) {

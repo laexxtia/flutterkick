@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/curr_user_profile_screen.dart';
-import 'package:flutter_project/past_matches.dart';
-import 'package:flutter_project/profile_screen.dart';
+import 'package:flutter_project/page/past_matches.dart';
+import 'package:flutter_project/page/profile_screen.dart';
 import 'dart:math';
 import 'package:provider/provider.dart';
 import 'card_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'curr_user_profile_screen.dart';
+
 
 class MainPage extends StatefulWidget {
+
   const MainPage({Key? key}) : super(key: key);
 
   @override
@@ -16,7 +18,41 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  @override
+
+  List<String> namesList = [];
+
+  getData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      namesList = prefs.getStringList('passedNames')!;
+      print(namesList);
+    });
+  }
+
+  clearData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
+  }
+
+  setData(String name) async {
+    getData();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      namesList.add(name);
+      prefs.setStringList("passedNames", namesList);
+    });
+  }
+
+  setEmptyData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    namesList = [];
+    setState(() {
+      prefs.setStringList("passedNames", namesList);
+    });
+  }
+
+
+
   Widget build(BuildContext context) => Container(
     decoration: BoxDecoration(
       gradient: LinearGradient(
@@ -61,7 +97,11 @@ class _MainPageState extends State<MainPage> {
     onPressed: () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => ListViewHome()),
+        MaterialPageRoute(builder: (context) => ListViewHome(clearData: () {
+          clearData();
+        }, setData: () {
+          setEmptyData();
+        },)),
       );
     },
   );
@@ -97,7 +137,7 @@ class _MainPageState extends State<MainPage> {
         child: Icon(Icons.favorite, color: Colors.teal, size: 32),
         onPressed: () {
           final provider = Provider.of<CardProvider>(context, listen: false);
-          provider.like();
+          // provider.like();
         },
       ),
     ],
@@ -129,8 +169,9 @@ class _MainPageState extends State<MainPage> {
             position: user.position.toString(),
             urlImage: user.profilePic.toString(),
             gender: user.gender.toString(),
-            names: [],
             isFront: userDetails.last == user,
+            setData: setData,
+            namesList: [],
           ))
           .toList(),
     );
@@ -143,8 +184,9 @@ class MentorCard extends StatefulWidget {
   final String name;
   final String gender;
   final String position;
-  final List<String> names;
   final bool isFront;
+  final Function(String name) setData;
+  final List<String> namesList;
   const MentorCard({
     Key? key,
     required this.id,
@@ -152,31 +194,24 @@ class MentorCard extends StatefulWidget {
     required this.name,
     required this.gender,
     required this.position,
-    required this.names,
     required this.isFront,
+    required this.setData,
+    required this.namesList,
   }) : super(key: key);
 
   @override
-  State<MentorCard> createState() => _MentorCardState(id, names);
+  State<MentorCard> createState() => _MentorCardState(namesList);
 }
 
 class _MentorCardState extends State<MentorCard> {
 
-  String id;
-  List<String>? names = [];
-  _MentorCardState(this.id, this.names);
+  List<String> namesList = [];
 
-  getData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      names = prefs.getStringList('passedNames');
-    });
-  }
+  _MentorCardState(namesList);
 
   @override
   void initState() {
     super.initState();
-
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final size = MediaQuery.of(context).size;
 
@@ -227,9 +262,9 @@ class _MentorCardState extends State<MentorCard> {
     },
     onPanEnd: (details) async {
       final provider = Provider.of<CardProvider>(context, listen: false);
-      names?.add(widget.name);
-      print(names);
-      provider.endPosition(names);
+      if (provider.endPosition() == "LIKE") {
+        widget.setData(widget.name);
+      }
     },
   );
 
@@ -248,7 +283,7 @@ class _MentorCardState extends State<MentorCard> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProfileScreen(id: id)),
+                MaterialPageRoute(builder: (context) => ProfileScreen()),
               );
             },
             child: Container(

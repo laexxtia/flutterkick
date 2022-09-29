@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_project/mentor_user.dart';
+import 'package:flutter_project/model/mentor_user.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -40,9 +40,10 @@ class CardProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> endPosition(names) async {
+  endPosition() {
     _isDragging = false;
     notifyListeners();
+    String check_status = "";
 
     final status = getStatus(force: true);
 
@@ -57,9 +58,7 @@ class CardProvider extends ChangeNotifier {
 
     switch (status) {
       case CardStatus.like:
-        like();
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-        prefs.setStringList("passedNames", names);
+        check_status = like();
         break;
       case CardStatus.dislike:
         dislike();
@@ -70,6 +69,7 @@ class CardProvider extends ChangeNotifier {
       default:
         resetPosition();
     }
+    return check_status;
   }
 
   void resetPosition() {
@@ -125,12 +125,12 @@ class CardProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void like() {
+  like() {
     _angle = 20;
     _position += Offset(2 * _screenSize.width, 0);
     _nextCard();
-
     notifyListeners();
+    return "LIKE";
   }
 
   void superLike() {
