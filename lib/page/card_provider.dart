@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_project/model/mentor_user.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 
 enum CardStatus { like, dislike, superLike }
 
@@ -38,7 +39,27 @@ class CardProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  endPosition() {
+  void customToast(String message, BuildContext context) {
+    showToast(
+        message,
+        textStyle: TextStyle(
+            fontSize: 24,
+            wordSpacing: 0.1,
+            color: Colors.white,
+            fontWeight: FontWeight.bold),
+        textPadding: EdgeInsets.all(23),
+        fullWidth: false,
+        toastHorizontalMargin: 5,
+        borderRadius: BorderRadius.circular(15),
+        backgroundColor: Colors.tealAccent,
+        alignment: Alignment.bottomLeft,
+        position: StyledToastPosition.top,
+        animation: StyledToastAnimation.slideToBottomFade,
+        duration: Duration(seconds: 1),
+        context: context);
+  }
+
+  endPosition(BuildContext context) {
     _isDragging = false;
     notifyListeners();
     String check_status = "";
@@ -46,12 +67,7 @@ class CardProvider extends ChangeNotifier {
     final status = getStatus(force: true);
 
     if (status != null) {
-      // Fluttertoast.cancel();
-      // Fluttertoast.showToast(
-      //   msg: status.toString().split('.').last.toUpperCase(),
-      //   gravity: ToastGravity.TOP,
-      //   fontSize: 36,
-      // );
+      customToast(status.toString().split('.').last.toUpperCase(), context);
     }
 
     switch (status) {
@@ -128,7 +144,7 @@ class CardProvider extends ChangeNotifier {
     _position += Offset(2 * _screenSize.width, 0);
     _nextCard();
     notifyListeners();
-    return "LIKE";
+    return "YES";
   }
 
   void superLike() {

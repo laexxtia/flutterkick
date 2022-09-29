@@ -278,7 +278,7 @@ class _MentorCardState extends State<MentorCard> {
       },
       onPanEnd: (details) async {
         final provider = Provider.of<CardProvider>(context, listen: false);
-        if (provider.endPosition() == "LIKE") {
+        if (provider.endPosition(context) == "YES") {
           for (var i = 0; i < userDetails.length; i++) {
             if (i == userDetails.length - 1) {
               widget.setData(userDetails[i]);
