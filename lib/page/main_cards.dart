@@ -68,7 +68,7 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: Text("Mentor Finder"),
+        title: Text("MentorMe"),
         leading: buildLogo(),
         actions: [
           profileLogo(),
@@ -116,32 +116,42 @@ class _MainPageState extends State<MainPage> {
     },
   );
 
-  Widget buildButtons() => Row(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    children: [
-      ElevatedButton(
-        child: Icon(Icons.clear, color: Colors.red, size: 32),
-        onPressed: () {
-          final provider = Provider.of<CardProvider>(context, listen: false);
-          provider.dislike();
-        },
-      ),
-      ElevatedButton(
-        child: Icon(Icons.star, color: Colors.blue, size: 32),
-        onPressed: () {
-          final provider = Provider.of<CardProvider>(context, listen: false);
-          provider.superLike();
-        },
-      ),
-      ElevatedButton(
-        child: Icon(Icons.favorite, color: Colors.teal, size: 32),
-        onPressed: () {
-          final provider = Provider.of<CardProvider>(context, listen: false);
-          // provider.like();
-        },
-      ),
-    ],
-  );
+  Widget buildButtons() {
+    final provider = Provider.of<CardProvider>(context);
+    final userDetails = provider.userDetails;
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        ElevatedButton(
+          child: Icon(Icons.clear, color: Colors.red, size: 32),
+          onPressed: () {
+            final provider = Provider.of<CardProvider>(context, listen: false);
+            provider.dislike();
+          },
+        ),
+        ElevatedButton(
+          child: Icon(Icons.star, color: Colors.blue, size: 32),
+          onPressed: () {
+            final provider = Provider.of<CardProvider>(context, listen: false);
+            provider.superLike();
+          },
+        ),
+        ElevatedButton(
+          child: Icon(Icons.favorite, color: Colors.teal, size: 32),
+          onPressed: () {
+            final provider = Provider.of<CardProvider>(context, listen: false);
+            for(var i = 0; i < userDetails.length; i++) {
+              if (i == userDetails.length - 1) {
+                setData(userDetails[i].name.toString());
+                provider.like();
+              }
+            }
+          },
+        ),
+      ],
+    );
+  }
 
   Widget buildCards() {
     final provider = Provider.of<CardProvider>(context);

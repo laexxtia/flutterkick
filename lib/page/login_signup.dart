@@ -16,7 +16,7 @@ class _LoginSignupState extends State<LoginSignup> {
       home: Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: Text('Appname'),
+            title: Text('MentorMe'),
             backgroundColor: const Color(0xfff07d33),
           ),
           body: Center(child: Column(children: <Widget>[
@@ -24,7 +24,7 @@ class _LoginSignupState extends State<LoginSignup> {
               margin: EdgeInsets.all(5),
                 child: new Column(
                   children: [
-                    Text('Welcome to Our Application'),
+                    Text('Welcome to MentorMe, \nThe best mentor finder app'),
                     new Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,

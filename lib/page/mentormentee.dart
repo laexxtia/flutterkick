@@ -17,7 +17,7 @@ class _MoMState extends State<MoM> {
     return Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: Text('Flutter MoM Example'),
+            title: Text('MentorMe'),
             backgroundColor: const Color(0xfff07d33),
           ),
           body:
