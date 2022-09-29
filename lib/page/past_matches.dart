@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../model/mentor_user.dart';
 
 class ListViewHome extends StatefulWidget {
   final Function() clearData;
@@ -22,7 +26,6 @@ class _ListViewHomeState extends State<ListViewHome> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       passedNames = prefs.getStringList('passedNames')!;
-      print(passedNames);
     });
   }
 
@@ -48,10 +51,12 @@ class _ListViewHomeState extends State<ListViewHome> {
                       itemCount: passedNames?.length,
                       itemBuilder: (BuildContext context, int index) {
                         if (passedNames != null) {
+                          Map<String,dynamic> jsonDetails = jsonDecode(passedNames[index]);
+                          User user = User.fromJson(jsonDetails);
                           return ListTile(
-                              title: Text(passedNames![index]),
-                              subtitle: Text("The battery is full."),
-                              leading: CircleAvatar(backgroundImage: NetworkImage("https://images.unsplash.com/photo-1547721064-da6cfb341d50")),
+                              title: Text(user.name.toString()),
+                              subtitle: Text(user.industry.toString()),
+                              leading: CircleAvatar(backgroundImage: NetworkImage(user.profilePic.toString())),
                               trailing: Icon(Icons.star));
                         }
                       },

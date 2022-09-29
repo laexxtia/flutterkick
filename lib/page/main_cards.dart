@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_project/page/past_matches.dart';
 import 'package:flutter_project/page/profile_screen.dart';
 import 'dart:math';
 import 'package:provider/provider.dart';
+import '../model/mentor_user.dart';
 import 'card_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -25,7 +28,6 @@ class _MainPageState extends State<MainPage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       namesList = prefs.getStringList('passedNames')!;
-      print(namesList);
     });
   }
 
@@ -34,11 +36,11 @@ class _MainPageState extends State<MainPage> {
     await prefs.clear();
   }
 
-  setData(String name) async {
-    getData();
+  setData(User user) async {
+    String newJson = jsonEncode(user);
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      namesList.add(name);
+      namesList.add(newJson);
       prefs.setStringList("passedNames", namesList);
     });
   }
@@ -143,7 +145,7 @@ class _MainPageState extends State<MainPage> {
             final provider = Provider.of<CardProvider>(context, listen: false);
             for(var i = 0; i < userDetails.length; i++) {
               if (i == userDetails.length - 1) {
-                setData(userDetails[i].name.toString());
+                setData(userDetails[i]);
                 provider.like();
               }
             }
@@ -195,7 +197,7 @@ class MentorCard extends StatefulWidget {
   final String gender;
   final String position;
   final bool isFront;
-  final Function(String name) setData;
+  final Function(User user) setData;
   final List<String> namesList;
   const MentorCard({
     Key? key,
@@ -235,48 +237,57 @@ class _MentorCardState extends State<MentorCard> {
     child: widget.isFront ? buildFrontCard() : buildCard(),
   );
 
-  Widget buildFrontCard() => GestureDetector(
-    child: LayoutBuilder(
-      builder: (context, constraints) {
-        final provider = Provider.of<CardProvider>(context);
-        final position = provider.position;
-        final milliseconds = provider.isDragging ? 0 : 400;
+  Widget buildFrontCard() {
+    final provider = Provider.of<CardProvider>(context);
+    final userDetails = provider.userDetails;
 
-        final center = constraints.smallest.center(Offset.zero);
-        final angle = provider.angle * pi / 180;
-        final rotatedMatrix = Matrix4.identity()
-          ..translate(center.dx, center.dy)
-          ..rotateZ(angle)
-          ..translate(-center.dx, -center.dy);
+    return GestureDetector(
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final provider = Provider.of<CardProvider>(context);
+          final position = provider.position;
+          final milliseconds = provider.isDragging ? 0 : 400;
 
-        return AnimatedContainer(
-          curve: Curves.easeInOut,
-          duration: Duration(milliseconds: milliseconds),
-          transform: rotatedMatrix..translate(position.dx, position.dy),
-          child: Stack(
-            children: [
-              buildCard(),
-              buildStamps(),
-            ],
-          ),
-        );
+          final center = constraints.smallest.center(Offset.zero);
+          final angle = provider.angle * pi / 180;
+          final rotatedMatrix = Matrix4.identity()
+            ..translate(center.dx, center.dy)
+            ..rotateZ(angle)
+            ..translate(-center.dx, -center.dy);
+
+          return AnimatedContainer(
+            curve: Curves.easeInOut,
+            duration: Duration(milliseconds: milliseconds),
+            transform: rotatedMatrix..translate(position.dx, position.dy),
+            child: Stack(
+              children: [
+                buildCard(),
+                buildStamps(),
+              ],
+            ),
+          );
+        },
+      ),
+      onPanStart: (details) {
+        final provider = Provider.of<CardProvider>(context, listen: false);
+        provider.startPosition(details);
       },
-    ),
-    onPanStart: (details) {
-      final provider = Provider.of<CardProvider>(context, listen: false);
-      provider.startPosition(details);
-    },
-    onPanUpdate: (details) {
-      final provider = Provider.of<CardProvider>(context, listen: false);
-      provider.updatePosition(details);
-    },
-    onPanEnd: (details) async {
-      final provider = Provider.of<CardProvider>(context, listen: false);
-      if (provider.endPosition() == "LIKE") {
-        widget.setData(widget.name);
-      }
-    },
-  );
+      onPanUpdate: (details) {
+        final provider = Provider.of<CardProvider>(context, listen: false);
+        provider.updatePosition(details);
+      },
+      onPanEnd: (details) async {
+        final provider = Provider.of<CardProvider>(context, listen: false);
+        if (provider.endPosition() == "LIKE") {
+          for (var i = 0; i < userDetails.length; i++) {
+            if (i == userDetails.length - 1) {
+              widget.setData(userDetails[i]);
+            }
+          }
+        }
+      },
+    );
+  }
 
   Widget buildCard() {
     return ClipRRect(
