@@ -22,7 +22,7 @@ class _CalendarState extends State<Calendar> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          backgroundColor: const Color(0xfff07d33),
           centerTitle: true,
           title: Text("Calendar"),
         ),
