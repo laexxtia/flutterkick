@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/model/mentor_user.dart';
 import 'package:provider/provider.dart';
 
+import '../model/user.dart';
+import '../utils/user_preferences.dart';
 import 'calendar.dart';
 import 'card_provider.dart';
 
@@ -13,6 +15,8 @@ class CurrProfileScreen extends StatefulWidget {
 }
 
 class _CurrProfileScreenState extends State<CurrProfileScreen> {
+  Mentee user = UserPreferences.myUser;
+
   @override
   Widget build(BuildContext context) {
 
@@ -25,7 +29,7 @@ class _CurrProfileScreenState extends State<CurrProfileScreen> {
           calendarLogo(),
         ],
       ),
-      backgroundColor: const Color(0xfff07d33),
+      backgroundColor: const Color(0xfff3e3fb),
       body: SizedBox(
         width: double.infinity,
         child: Column(
@@ -54,17 +58,17 @@ class _CurrProfileScreenState extends State<CurrProfileScreen> {
                       ],
                       image: DecorationImage(
                         image: NetworkImage(
-                          "https://cdn-icons-png.flaticon.com/512/1144/1144760.png",
+                          user.imagePath,
                         ),
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
                   Text(
-                    "Johnny",
+                    user.name,
                     style: TextStyle(
                       fontFamily: "Montserrat",
-                      color: Colors.white,
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                     ),
@@ -73,7 +77,7 @@ class _CurrProfileScreenState extends State<CurrProfileScreen> {
                     "Student",
                     style: TextStyle(
                       fontFamily: "Montserrat",
-                      color: Colors.white70,
+                      color: Colors.black,
                       fontSize: 16,
                     ),
                   ),
@@ -113,10 +117,10 @@ class _CurrProfileScreenState extends State<CurrProfileScreen> {
                           ),
                         ),
                         const SizedBox(height: 20,),
-                        listProfile(Icons.person, "Full Name", "Johnny",
+                        listProfile(Icons.person, "Full Name", user.name,
                         ),
                         listProfile(Icons.domain, "School", "-"),
-                        listProfile(Icons.female, "Gender", "Male"),
+                        listProfile(Icons.female, "Gender", "Female"),
                         listProfile(Icons.phone, "About",
                             "Looking to be a Software Engineer \n."),
                         listProfile(Icons.edit_note_rounded, "Experiences",

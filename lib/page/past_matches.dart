@@ -33,9 +33,10 @@ class _ListViewHomeState extends State<ListViewHome> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color(0xfff07d33),
+          backgroundColor: Colors.transparent,
           title: Text("Matches"),
         ),
+        backgroundColor: const Color(0xfff3e3fb),
         body: Container (
           child: Column(
             children: [
@@ -54,6 +55,7 @@ class _ListViewHomeState extends State<ListViewHome> {
                           Map<String,dynamic> jsonDetails = jsonDecode(passedNames[index]);
                           User user = User.fromJson(jsonDetails);
                           return ListTile(
+                              tileColor: Colors.white,
                               title: Text(user.name.toString()),
                               subtitle: Text(user.industry.toString()),
                               leading: CircleAvatar(backgroundImage: NetworkImage(user.profilePic.toString())),
@@ -64,21 +66,19 @@ class _ListViewHomeState extends State<ListViewHome> {
                   ),
                 ),
               ),
-              OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                  shape: StadiumBorder(),
-                  side: BorderSide(
-                      width: 2,
-                      color: Colors.black
-                  ),
-                ),
+              ElevatedButton(
                 onPressed: () async {
                   widget.clearData();
                   widget.setData();
                   Navigator.pop(context);
                 },
-                child: Text('Clear'),
-              )
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white, elevation: 0),
+                child: Text(
+                  "Clear".toUpperCase(),
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
             ],
           ),
         ),

@@ -61,7 +61,7 @@ class _MainPageState extends State<MainPage> {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            Color(0xfff07d33),
+            Color(0xfff3e3fb),
             Colors.black,
           ]
       ),

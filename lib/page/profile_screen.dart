@@ -23,12 +23,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: Text("Profile"),
+        title: Text("PROFILE"),
         actions: [
           calendarLogo(),
         ],
       ),
-      backgroundColor: const Color(0xfff07d33),
+      backgroundColor: const Color(0xfff3e3fb),
       body: SizedBox(
         width: double.infinity,
         child: Column(
@@ -67,7 +67,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     userDetails[userDetails.length-1].name.toString(),
                     style: TextStyle(
                       fontFamily: "Montserrat",
-                      color: Colors.white,
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                     ),
@@ -76,7 +76,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     userDetails[userDetails.length-1].industry.toString(),
                     style: TextStyle(
                       fontFamily: "Montserrat",
-                      color: Colors.white70,
+                      color: Colors.black,
                       fontSize: 16,
                     ),
                   ),

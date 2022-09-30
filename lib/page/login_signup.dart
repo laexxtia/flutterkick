@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'mentormentee.dart';
 class LoginSignup extends StatefulWidget {
@@ -16,7 +17,12 @@ class _LoginSignupState extends State<LoginSignup> {
       home: Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: Text('MentorMe'),
+            title: Text(
+              "MentorMe",
+              style: GoogleFonts.roboto(
+                textStyle: TextStyle(fontWeight: FontWeight.bold)
+              ),
+            ),
             backgroundColor: const Color(0xfff07d33),
           ),
           body: Center(child: Column(children: <Widget>[
@@ -24,7 +30,12 @@ class _LoginSignupState extends State<LoginSignup> {
               margin: EdgeInsets.all(5),
                 child: new Column(
                   children: [
-                    Text('Welcome to MentorMe, \nThe best mentor finder app'),
+                    Text(
+                    "Welcome to MentorMe, \nThe best mentor finder app",
+                    style: GoogleFonts.roboto(
+                        textStyle: TextStyle(),
+                      ),
+                    ),
                     new Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -43,7 +54,12 @@ class _LoginSignupState extends State<LoginSignup> {
                               MaterialPageRoute(builder: (context) =>  MoM()),
                             );
                           },
-                          child: Text(' Sign Up '),
+                          child: Text(
+                              ' Sign Up ',
+                              style: GoogleFonts.roboto(
+                              textStyle: TextStyle(),
+                            ),
+                          ),
                         ),
 
                         OutlinedButton(
@@ -60,7 +76,12 @@ class _LoginSignupState extends State<LoginSignup> {
                               MaterialPageRoute(builder: (context) => MoM()),
                             );
                           },
-                          child: Text(' Login '),
+                          child: Text(
+                            ' Login ',
+                            style: GoogleFonts.roboto(
+                            textStyle: TextStyle(),
+                            ),
+                          ),
                         )
 
                       ],

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/page/Welcome/welcome_screen.dart';
 import 'package:flutter_project/page/login_signup.dart';
+import 'constants.dart';
 import 'page/card_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -26,10 +28,21 @@ class MyApp extends StatelessWidget {
             minimumSize: Size.square(70),
           ),
         ),
+        inputDecorationTheme: const InputDecorationTheme(
+          filled: true,
+          fillColor: kPrimaryLightColor,
+          iconColor: kPrimaryColor,
+          prefixIconColor: kPrimaryColor,
+          contentPadding: EdgeInsets.symmetric(
+              horizontal: defaultPadding, vertical: defaultPadding),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(30)),
+            borderSide: BorderSide.none,
+          ),
+        )),
+      home: WelcomeScreen(),
       ),
-      home: LoginSignup(),
-    ),
-  );
+    );
 }
 
 

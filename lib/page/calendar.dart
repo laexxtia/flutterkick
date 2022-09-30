@@ -22,10 +22,11 @@ class _CalendarState extends State<Calendar> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color(0xfff07d33),
+          backgroundColor: Color(0xfffa99cae),
           centerTitle: true,
           title: Text("Calendar"),
         ),
+
         body: SfCalendar(
           view: CalendarView.month,
           dataSource: MeetingDataSource(_getDataSource()),
