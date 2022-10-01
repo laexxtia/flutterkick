@@ -33,6 +33,7 @@ class _ListViewHomeState extends State<ListViewHome> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           backgroundColor: Colors.transparent,
           title: Text("Matches"),
         ),
@@ -54,12 +55,14 @@ class _ListViewHomeState extends State<ListViewHome> {
                         if (passedNames != null) {
                           Map<String,dynamic> jsonDetails = jsonDecode(passedNames[index]);
                           User user = User.fromJson(jsonDetails);
-                          return ListTile(
-                              tileColor: Colors.white,
-                              title: Text(user.name.toString()),
-                              subtitle: Text(user.industry.toString()),
-                              leading: CircleAvatar(backgroundImage: NetworkImage(user.profilePic.toString())),
-                              trailing: Icon(Icons.star));
+                          if (user.status.toString() == "Not accepted") {
+                            return ListTile(
+                                tileColor: Colors.white,
+                                title: Text(user.name.toString()),
+                                subtitle: Text(user.industry.toString()),
+                                leading: CircleAvatar(backgroundImage: NetworkImage(user.profilePic.toString())),
+                                trailing: Text("Sent"));
+                          }
                         }
                       },
                     ),

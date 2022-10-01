@@ -171,7 +171,8 @@ class CardProvider extends ChangeNotifier {
         position: "Mentor",
         profilePic: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         industry: "Business",
-        gender: "Male"
+        gender: "Male",
+        status: "Not accepted",
       ),
       User(
         id: "1",
@@ -179,7 +180,8 @@ class CardProvider extends ChangeNotifier {
         position: "Mentor",
         profilePic: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1600",
         industry: "Software Engineer",
-        gender: "Female"
+        gender: "Female",
+        status: "Not accepted",
       ),
       User(
         id: "2",
@@ -187,7 +189,8 @@ class CardProvider extends ChangeNotifier {
         position: "Mentor",
         profilePic: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1600",
         industry: "Software Engineer",
-        gender: "Male"
+        gender: "Male",
+        status: "Not accepted",
       ),
       User(
         id: "3",
@@ -195,7 +198,8 @@ class CardProvider extends ChangeNotifier {
         position: "Mentor",
         profilePic: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1600",
         industry: "Software Engineer",
-        gender: "Female"
+        gender: "Female",
+        status: "Not accepted",
       ),
       User(
         id: "4",
@@ -203,7 +207,8 @@ class CardProvider extends ChangeNotifier {
         position: "Mentor",
         profilePic: "https://images.pexels.com/photos/937481/pexels-photo-937481.jpeg?auto=compress&cs=tinysrgb&w=1600",
         industry: "Business",
-        gender: "Male"
+        gender: "Male",
+        status: "Not accepted",
       ),
       User(
         id: "5",
@@ -211,7 +216,8 @@ class CardProvider extends ChangeNotifier {
         position: "Mentor",
         profilePic: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1600",
         industry: "Healthcare",
-        gender: "Male"
+        gender: "Male",
+        status: "Not accepted",
       ),
       User(
         id: "6",
@@ -219,7 +225,8 @@ class CardProvider extends ChangeNotifier {
         position: "Mentor",
         profilePic: "https://images.pexels.com/photos/38554/girl-people-landscape-sun-38554.jpeg?auto=compress&cs=tinysrgb&w=1600",
         industry: "Healthcare",
-        gender: "Female"
+        gender: "Female",
+        status: "Not accepted",
       ),
     ].reversed.toList();
 

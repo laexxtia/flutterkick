@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../model/user.dart';
 import '../utils/user_preferences.dart';
+import 'Welcome/welcome_screen.dart';
 import 'calendar.dart';
 import 'card_provider.dart';
 
@@ -116,7 +117,19 @@ class _CurrProfileScreenState extends State<CurrProfileScreen> {
                             fontSize: 20,
                           ),
                         ),
-                        const SizedBox(height: 20,),
+                        IconButton(
+                          icon: Icon(Icons.logout),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return WelcomeScreen();
+                                },
+                              ),
+                            );
+                          },
+                        ),
                         listProfile(Icons.person, "Full Name", user.name,
                         ),
                         listProfile(Icons.domain, "School", "-"),

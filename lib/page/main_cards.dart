@@ -6,6 +6,8 @@ import 'package:flutter_project/page/profile_screen.dart';
 import 'dart:math';
 import 'package:provider/provider.dart';
 import '../model/mentor_user.dart';
+import '../model/user.dart';
+import '../utils/user_preferences.dart';
 import 'card_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -179,6 +181,7 @@ class _MainPageState extends State<MainPage> {
             id: user.id.toString(),
             name: user.name.toString(),
             position: user.position.toString(),
+            status: user.status.toString(),
             urlImage: user.profilePic.toString(),
             gender: user.gender.toString(),
             isFront: userDetails.last == user,
@@ -196,6 +199,7 @@ class MentorCard extends StatefulWidget {
   final String name;
   final String gender;
   final String position;
+  final String status;
   final bool isFront;
   final Function(User user) setData;
   final List<String> namesList;
@@ -206,6 +210,7 @@ class MentorCard extends StatefulWidget {
     required this.name,
     required this.gender,
     required this.position,
+    required this.status,
     required this.isFront,
     required this.setData,
     required this.namesList,
