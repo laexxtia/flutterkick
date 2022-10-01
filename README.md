@@ -9,19 +9,16 @@ Our team has developed a Flutter based app as a solution to one of the 17 UN SDG
 <br/>
 <br/>
 <img src="https://github.com/laexxtia/flutterkick/blob/main/flutter_01.png?raw=true" width="200px" />
-<br/>
-<br/>
+
+## References:
 We would like to thank the various online tutorials and open source code materials which helped us throughout our app-making process. Special thanks to out mentor, Nicholette, who patiently guided us over the last 4 weeks.
-<br/>
-<br/>
-## References:<br/>
-**Youtube:**<br/>
+
+#### Youtube:
 Johannes Milke
 <br/>
 The Flutter Way
-<br/>
-<br/>
-**Github:**<br/>
+
+#### Github:
 https://github.com/JohannesMilke/user_profile_ii_example.git
 
 
