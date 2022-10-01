@@ -9,7 +9,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  static const String title = 'Mentor App';
+  static const String title = 'MentorMe';
 
   @override
   Widget build(BuildContext context) => ChangeNotifierProvider (
