@@ -14,8 +14,8 @@ Our team has developed a Flutter based app as a solution to one of the 17 UN SDG
 We would like to thank the various online tutorials and open source code materials which helped us throughout our app-making process. Special thanks to out mentor, Nicholette, who patiently guided us over the last 4 weeks.
 <br/>
 <br/>
-**References:**<br/>
-Youtube:<br/>
+## References:<br/>
+**Youtube:**<br/>
 Johannes Milke
 <br/>
 The Flutter Way
