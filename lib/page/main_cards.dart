@@ -6,8 +6,6 @@ import 'package:flutter_project/page/profile_screen.dart';
 import 'dart:math';
 import 'package:provider/provider.dart';
 import '../model/mentor_user.dart';
-import '../model/user.dart';
-import '../utils/user_preferences.dart';
 import 'card_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

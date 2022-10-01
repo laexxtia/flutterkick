@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project/page/Welcome/welcome_screen.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
-
-import '../constants.dart';
 import '../model/user.dart';
 import '../utils/user_preferences.dart';
 
