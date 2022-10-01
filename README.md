@@ -112,12 +112,17 @@ Clone the repo by following either of the 3 methods:
 ## References:
 We would like to thank the various online tutorials and open source code materials which helped us throughout our app-making process. Special thanks to out mentor, Nicholette, who patiently guided us over the last 4 weeks.
 
-#### Youtube:
+### Youtube:
 Johannes Milke
 <br/>
+https://www.youtube.com/c/JohannesMilke
+<br/><br/>
 The Flutter Way
-
-#### Github:
+<br/>
+https://www.youtube.com/c/TheFlutterWay
+### Github:
+https://github.com/abuanwar072/Welcome-Login-Signup-Page-Flutter
+<br/>
 https://github.com/JohannesMilke/user_profile_ii_example.git
 
 
