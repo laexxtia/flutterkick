@@ -36,7 +36,7 @@ Huei Ming <br />Cassandra <br />Abiya <br />Laetitia <br />Rachel
 <br/>
 
 ## Guide to run our App on Android Studio:
-### Step 1:
+### Step 1: Clone Repo
 Clone the repo by following either of the 3 methods: 
 <br/>
 
@@ -65,7 +65,7 @@ Next, clone the repo by running the following command
 
 <br/>
 
-### Step 2:
+### Step 2: Open Android Studio
 After following either of the 3 options, open up Android Studio. Select *Open* and choose the folder you've cloned previously
 </br>
 
@@ -73,7 +73,7 @@ After following either of the 3 options, open up Android Studio. Select *Open* a
 
 <br/><br/>
 
-### Step 3:
+### Step 3: Pub Get
 Open pubspec yaml file and click Pub Get to install all the required packages
 </br>
 
@@ -81,7 +81,7 @@ Open pubspec yaml file and click Pub Get to install all the required packages
 
 <br/><br/>
 
-### Step 4:
+### Step 4: Android Emulator
 Open Device Manager and make sure you have the latest android emulator running API 33 
 </br>
 
@@ -90,7 +90,7 @@ Open Device Manager and make sure you have the latest android emulator running A
 
 <br/><br/>
 
-### Step 5:
+### Step 5: Edit Emulator Settings
 Click on the edit pencil icon on the right > Show Advanced Settings and allocate the appropriate RAM and storage for the emulator then click Finish
 <br/>
 :exclamation: This is required for the app to run smoothly
@@ -100,7 +100,7 @@ Click on the edit pencil icon on the right > Show Advanced Settings and allocate
 
 <br/><br/>
 
-### Step 6:
+### Step 6: Start up Emulator
 Click on the arrow play button to start up the emulator
 </br>
 
@@ -108,7 +108,7 @@ Click on the arrow play button to start up the emulator
 
 <br/><br/>
 
-### Step 7:
+### Step 7: Run App
 After your emulator has booted up, click on the green arrow run button to run the App
 <br/>
 
