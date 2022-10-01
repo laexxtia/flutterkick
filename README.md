@@ -127,7 +127,7 @@ You may now enjoy using our App!
 ## References:
 We would like to thank the various online tutorials and open source code materials which helped us throughout our app-making process. Special thanks to out mentor, Nicholette, who patiently guided us over the last 4 weeks.
 
-### Youtube:
+### Youtube
 Johannes Milke
 <br/>
 https://www.youtube.com/c/JohannesMilke
@@ -135,7 +135,7 @@ https://www.youtube.com/c/JohannesMilke
 The Flutter Way
 <br/>
 https://www.youtube.com/c/TheFlutterWay
-### Github:
+### Github
 https://github.com/abuanwar072/Welcome-Login-Signup-Page-Flutter
 <br/>
 https://github.com/JohannesMilke/user_profile_ii_example.git
