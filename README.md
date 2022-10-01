@@ -23,7 +23,7 @@ We have selected **#10 Reduced Inequalities** as one of the 17 UN Sustainable De
 <br/>
 
 ## Our Solution:
-Our team has developed a Flutter based app as a solution to one of the 17 UN SDGs -- "Reducing Inequalities". Our app, _**MentorMe**_ is directed towards the less fortunate to help them find a willing mentor to guide them to reach their desired career goals.
+Our team has developed a Flutter based app as a solution to one of the 17 UN SDGs - **Reducing Inequalities**. Our app, _**MentorMe**_ is directed towards the less fortunate to help them find a willing mentor to guide them to reach their desired career goals.
 <br/>
 <br/>
 <img src="https://github.com/laexxtia/flutterkick/blob/main/flutter_01.png?raw=true" width="200px" />
