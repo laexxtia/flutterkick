@@ -5,7 +5,7 @@
 - [Problem Statement](#problem-statement) <a name="problem-statement"/>  
 - [Our Solution](#our-solution) <a name="our-solution"/>  
 - [Team Members](#team-members) <a name="team-members"/>    
-- [Guide to run on Android Studio](#guide-to-run-on-android-studio) <a name="guide-to-run-on-android-studio"/>  
+- [Guide to run our App on Android Studio](#guide-to-run-on-android-studio) <a name="guide-to-run-on-android-studio"/>  
 - [References](#references) <a name="references"/>    
 
 <br/>
@@ -35,7 +35,7 @@ Huei Ming <br />Cassandra <br />Abiya <br />Laetitia <br />Rachel
 
 <br/>
 
-## Guide to run on Android Studio:
+## Guide to run our App on Android Studio:
 ### Step 1:
 Clone the repo by following either of the 3 methods: 
 <br/>
