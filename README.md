@@ -4,7 +4,8 @@
 - [About us](#about-us) <a name="about-us"/>  
 - [Problem Statement](#problem-statement) <a name="problem-statement"/>  
 - [Our Solution](#our-solution) <a name="our-solution"/>  
-- [Team Members](#team-members) <a name="team-members"/>    
+- [Team Members](#team-members) <a name="team-members"/>   
+- [Tasks Delegation](#task-delegation) <a name="task-delegation"/>
 - [Guide to run our App on Android Studio](#guide-to-run-on-android-studio) <a name="guide-to-run-on-android-studio"/>  
 - [References](#references) <a name="references"/>    
 
@@ -32,6 +33,15 @@ Our team has developed a Flutter based app as a solution to one of the 17 UN SDG
 
 ## Team Members:
 Huei Ming <br />Cassandra <br />Abiya <br />Laetitia <br />Rachel
+
+<br/>
+
+## Task Delegation:
+- Login/Signup Page -Cassandra
+- Profile Creation - Abiya
+- Swipe Mentors/Matches Page - Huei Ming
+- Calendar - Rachel
+- Profile Page - Laetitia
 
 <br/>
 
