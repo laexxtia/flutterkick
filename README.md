@@ -5,7 +5,7 @@
 - [Problem Statement](#problem-statement) <a name="problem-statement"/>  
 - [Our Solution](#our-solution) <a name="our-solution"/>  
 - [Team Members](#team-members) <a name="team-members"/>   
-- [Tasks Delegation](#task-delegation) <a name="task-delegation"/>
+- [Task Delegation](#task-delegation) <a name="task-delegation"/>
 - [Guide to run our App on Android Studio](#guide-to-run-on-android-studio) <a name="guide-to-run-on-android-studio"/>  
 - [References](#references) <a name="references"/>    
 
