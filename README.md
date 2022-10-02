@@ -37,7 +37,7 @@ Huei Ming <br />Cassandra <br />Abiya <br />Laetitia <br />Rachel
 <br/>
 
 ## Task Delegation:
-- Login/Signup Page -Cassandra
+- Login/Signup Page - Cassandra
 - Profile Creation - Abiya
 - Swipe Mentors/Matches Page - Huei Ming
 - Calendar - Rachel
