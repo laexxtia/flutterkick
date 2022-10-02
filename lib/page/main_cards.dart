@@ -70,7 +70,7 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: Text("MENTORME"),
+        title: Text("MentorMe"),
         leading: buildLogo(),
         actions: [
           profileLogo(),

@@ -24,7 +24,7 @@ class _CalendarState extends State<Calendar> {
         appBar: AppBar(
           backgroundColor: Color(0xfffa99cae),
           centerTitle: true,
-          title: Text("CALENDAR"),
+          title: Text("Calendar"),
         ),
 
         body: SfCalendar(

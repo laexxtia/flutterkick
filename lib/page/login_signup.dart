@@ -18,7 +18,7 @@ class _LoginSignupState extends State<LoginSignup> {
           appBar: AppBar(
             centerTitle: true,
             title: Text(
-              "MENTORME",
+              "MentorMe",
               style: GoogleFonts.roboto(
                 textStyle: TextStyle(fontWeight: FontWeight.bold)
               ),

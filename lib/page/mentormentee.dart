@@ -74,7 +74,7 @@ class _MoMState extends State<MoM> {
           appBar: AppBar(
             centerTitle: true,
             title: Text(
-              "MENTORME",
+              "MentorMe",
               style: GoogleFonts.roboto(
                 textStyle: TextStyle(),
                 fontWeight: FontWeight.bold,
