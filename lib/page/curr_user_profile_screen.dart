@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/model/mentor_user.dart';
+import 'package:provider/provider.dart';
+
 import '../model/user.dart';
 import '../utils/user_preferences.dart';
-import 'Welcome/welcome_screen.dart';
 import 'calendar.dart';
+import 'card_provider.dart';
 
 class CurrProfileScreen extends StatefulWidget {
   CurrProfileScreen({Key? key}) : super(key: key);
@@ -113,19 +116,7 @@ class _CurrProfileScreenState extends State<CurrProfileScreen> {
                             fontSize: 20,
                           ),
                         ),
-                        IconButton(
-                          icon: Icon(Icons.logout),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return WelcomeScreen();
-                                },
-                              ),
-                            );
-                          },
-                        ),
+                        const SizedBox(height: 20,),
                         listProfile(Icons.person, "Full Name", user.name,
                         ),
                         listProfile(Icons.domain, "School", "-"),

@@ -62,7 +62,7 @@ class CardProvider extends ChangeNotifier {
   endPosition(BuildContext context) {
     _isDragging = false;
     notifyListeners();
-    bool swipedYes = false;
+    String check_status = "";
 
     final status = getStatus(force: true);
 
@@ -72,18 +72,18 @@ class CardProvider extends ChangeNotifier {
 
     switch (status) {
       case CardStatus.like:
-        swipedYes = like();
+        check_status = like();
         break;
       case CardStatus.dislike:
-        swipedYes = dislike();
+        dislike();
         break;
       case CardStatus.superLike:
-        swipedYes = superLike();
+        superLike();
         break;
       default:
         resetPosition();
     }
-    return swipedYes;
+    return check_status;
   }
 
   void resetPosition() {
@@ -131,13 +131,12 @@ class CardProvider extends ChangeNotifier {
 
   }
 
-  dislike() {
+  void dislike() {
     _angle = -20;
     _position -= Offset(2 * _screenSize.width, 0);
     _nextCard();
 
     notifyListeners();
-    return false;
   }
 
   like() {
@@ -145,15 +144,15 @@ class CardProvider extends ChangeNotifier {
     _position += Offset(2 * _screenSize.width, 0);
     _nextCard();
     notifyListeners();
-    return true;
+    return "YES";
   }
 
-  superLike() {
+  void superLike() {
     _angle = 0;
     _position -= Offset(0, _screenSize.height);
     _nextCard();
+
     notifyListeners();
-    return true;
   }
 
   Future _nextCard() async {
@@ -172,8 +171,7 @@ class CardProvider extends ChangeNotifier {
         position: "Mentor",
         profilePic: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         industry: "Business",
-        gender: "Male",
-        status: "Not accepted",
+        gender: "Male"
       ),
       User(
         id: "1",
@@ -181,8 +179,7 @@ class CardProvider extends ChangeNotifier {
         position: "Mentor",
         profilePic: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1600",
         industry: "Software Engineer",
-        gender: "Female",
-        status: "Not accepted",
+        gender: "Female"
       ),
       User(
         id: "2",
@@ -190,8 +187,7 @@ class CardProvider extends ChangeNotifier {
         position: "Mentor",
         profilePic: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1600",
         industry: "Software Engineer",
-        gender: "Male",
-        status: "Not accepted",
+        gender: "Male"
       ),
       User(
         id: "3",
@@ -199,8 +195,7 @@ class CardProvider extends ChangeNotifier {
         position: "Mentor",
         profilePic: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1600",
         industry: "Software Engineer",
-        gender: "Female",
-        status: "Not accepted",
+        gender: "Female"
       ),
       User(
         id: "4",
@@ -208,8 +203,7 @@ class CardProvider extends ChangeNotifier {
         position: "Mentor",
         profilePic: "https://images.pexels.com/photos/937481/pexels-photo-937481.jpeg?auto=compress&cs=tinysrgb&w=1600",
         industry: "Business",
-        gender: "Male",
-        status: "Not accepted",
+        gender: "Male"
       ),
       User(
         id: "5",
@@ -217,8 +211,7 @@ class CardProvider extends ChangeNotifier {
         position: "Mentor",
         profilePic: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1600",
         industry: "Healthcare",
-        gender: "Male",
-        status: "Not accepted",
+        gender: "Male"
       ),
       User(
         id: "6",
@@ -226,8 +219,7 @@ class CardProvider extends ChangeNotifier {
         position: "Mentor",
         profilePic: "https://images.pexels.com/photos/38554/girl-people-landscape-sun-38554.jpeg?auto=compress&cs=tinysrgb&w=1600",
         industry: "Healthcare",
-        gender: "Female",
-        status: "Not accepted",
+        gender: "Female"
       ),
     ].reversed.toList();
 

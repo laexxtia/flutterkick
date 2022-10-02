@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 import '../../Signup/signup_screen.dart';
-import '../../mentormentee.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -11,9 +10,6 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController _controllerEmail = TextEditingController(text: "john.doe@gmail.com");
-    final TextEditingController _controllerPwd = TextEditingController(text: "********");
-
     return Form(
       child: Column(
         children: [
@@ -22,7 +18,6 @@ class LoginForm extends StatelessWidget {
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor,
             onSaved: (email) {},
-            controller: _controllerEmail,
             decoration: InputDecoration(
               hintText: "Your email",
               prefixIcon: Padding(
@@ -37,7 +32,6 @@ class LoginForm extends StatelessWidget {
               textInputAction: TextInputAction.done,
               obscureText: true,
               cursorColor: kPrimaryColor,
-              controller: _controllerPwd,
               decoration: InputDecoration(
                 hintText: "Your password",
                 prefixIcon: Padding(
@@ -51,25 +45,25 @@ class LoginForm extends StatelessWidget {
           Hero(
             tag: "login_btn",
             child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return MoM();
-                    },
-                  ),
-                );
-              },
+              onPressed: () {},
               child: Text(
                 "Login".toUpperCase(),
-                style: TextStyle(
-                  color: Colors.black,
-                ),
               ),
             ),
           ),
           const SizedBox(height: defaultPadding),
+          // AlreadyHaveAnAccountCheck(
+          //   press: () {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(
+          //         builder: (context) {
+          //           return SignUpScreen();
+          //         },
+          //       ),
+          //     );
+          //   },
+          // ),
         ],
       ),
     );

@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_project/page/past_matches.dart';
 import 'package:flutter_project/page/profile_screen.dart';
-import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'dart:math';
 import 'package:provider/provider.dart';
 import '../model/mentor_user.dart';
@@ -119,26 +118,6 @@ class _MainPageState extends State<MainPage> {
     },
   );
 
-  void customToast(String message, BuildContext context) {
-    showToast(
-        message,
-        textStyle: TextStyle(
-            fontSize: 24,
-            wordSpacing: 0.1,
-            color: Colors.white,
-            fontWeight: FontWeight.bold),
-        textPadding: EdgeInsets.all(23),
-        fullWidth: false,
-        toastHorizontalMargin: 5,
-        borderRadius: BorderRadius.circular(15),
-        backgroundColor: Colors.tealAccent,
-        alignment: Alignment.bottomLeft,
-        position: StyledToastPosition.top,
-        animation: StyledToastAnimation.slideToBottomFade,
-        duration: Duration(seconds: 1),
-        context: context);
-  }
-
   Widget buildButtons() {
     final provider = Provider.of<CardProvider>(context);
     final userDetails = provider.userDetails;
@@ -151,20 +130,13 @@ class _MainPageState extends State<MainPage> {
           onPressed: () {
             final provider = Provider.of<CardProvider>(context, listen: false);
             provider.dislike();
-            customToast("DISLIKE", context);
           },
         ),
         ElevatedButton(
           child: Icon(Icons.star, color: Colors.blue, size: 32),
           onPressed: () {
             final provider = Provider.of<CardProvider>(context, listen: false);
-            for(var i = 0; i < userDetails.length; i++) {
-              if (i == userDetails.length - 1) {
-                setData(userDetails[i]);
-                provider.superLike();
-                customToast("SUPER\nLIKE", context);
-              }
-            }
+            provider.superLike();
           },
         ),
         ElevatedButton(
@@ -175,7 +147,6 @@ class _MainPageState extends State<MainPage> {
               if (i == userDetails.length - 1) {
                 setData(userDetails[i]);
                 provider.like();
-                customToast("LIKE", context);
               }
             }
           },
@@ -208,7 +179,6 @@ class _MainPageState extends State<MainPage> {
             id: user.id.toString(),
             name: user.name.toString(),
             position: user.position.toString(),
-            status: user.status.toString(),
             urlImage: user.profilePic.toString(),
             gender: user.gender.toString(),
             isFront: userDetails.last == user,
@@ -226,7 +196,6 @@ class MentorCard extends StatefulWidget {
   final String name;
   final String gender;
   final String position;
-  final String status;
   final bool isFront;
   final Function(User user) setData;
   final List<String> namesList;
@@ -237,7 +206,6 @@ class MentorCard extends StatefulWidget {
     required this.name,
     required this.gender,
     required this.position,
-    required this.status,
     required this.isFront,
     required this.setData,
     required this.namesList,
@@ -310,7 +278,7 @@ class _MentorCardState extends State<MentorCard> {
       },
       onPanEnd: (details) async {
         final provider = Provider.of<CardProvider>(context, listen: false);
-        if (provider.endPosition(context)) {
+        if (provider.endPosition(context) == "YES") {
           for (var i = 0; i < userDetails.length; i++) {
             if (i == userDetails.length - 1) {
               widget.setData(userDetails[i]);

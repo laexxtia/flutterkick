@@ -5,16 +5,12 @@ import '../../Login/login_screen.dart';
 import '../../mentormentee.dart';
 
 class SignUpForm extends StatelessWidget {
-
   const SignUpForm({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController _controllerName = TextEditingController(text: "sarah.abs@gmail.com");
-    final TextEditingController _controllerPwd = TextEditingController(text: "********");
-
     return Form(
       child: Column(
         children: [
@@ -23,7 +19,6 @@ class SignUpForm extends StatelessWidget {
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor,
             onSaved: (email) {},
-            controller: _controllerName,
             decoration: InputDecoration(
               hintText: "Your email",
               prefixIcon: Padding(
@@ -38,7 +33,6 @@ class SignUpForm extends StatelessWidget {
               textInputAction: TextInputAction.done,
               obscureText: true,
               cursorColor: kPrimaryColor,
-              controller: _controllerPwd,
               decoration: InputDecoration(
                 hintText: "Your password",
                 prefixIcon: Padding(

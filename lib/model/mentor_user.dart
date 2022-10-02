@@ -5,7 +5,6 @@ class User {
   String? profilePic;
   String? industry;
   String? gender;
-  String? status;
 
   User({
     required this.id,
@@ -14,11 +13,10 @@ class User {
     required this.profilePic,
     required this.industry,
     required this.gender,
-    required this.status,
   });
 
   User.fromJson(Map<String, dynamic> json) : id = json['id'], name = json['name'], position = json['position'],
-        profilePic = json['profilePic'], industry = json['industry'], gender = json['gender'], status = json['status'];
+        profilePic = json['profilePic'], industry = json['industry'], gender = json['gender'];
 
   Map toJson() => {
     'id': id,
@@ -27,6 +25,5 @@ class User {
     'profilePic': profilePic,
     'industry': industry,
     'gender': gender,
-    'status': status,
   };
 }
