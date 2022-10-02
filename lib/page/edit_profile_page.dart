@@ -1,15 +1,10 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_project/page/main_cards.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:path/path.dart';
 
 import '../constants.dart';
-import '../model/mentor_user.dart';
 import '../model/user.dart';
 import '../utils/user_preferences.dart';
-import '../widget/appbar_widget.dart';
 import '../widget/profile_widget.dart';
 import '../widget/textfield_widget.dart';
 
@@ -83,15 +78,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 style: TextStyle(color: Colors.black),
               ),
             ),
-            // FloatingActionButton(
-            //   child: Text('Next', style: TextStyle(fontSize: 15.0),),
-            //   onPressed: () {
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(builder: (context) => MainPage()),
-            //     );
-            //   },
-            // ),
           ],
         ),
       ),

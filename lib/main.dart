@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/page/Welcome/welcome_screen.dart';
-import 'package:flutter_project/page/login_signup.dart';
 import 'constants.dart';
 import 'page/card_provider.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +9,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  static const String title = 'Mentor App';
+  static const String title = 'MentorMe';
 
   @override
   Widget build(BuildContext context) => ChangeNotifierProvider (
