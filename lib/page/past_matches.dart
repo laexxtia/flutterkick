@@ -64,6 +64,7 @@ class _ListViewHomeState extends State<ListViewHome> {
                                 trailing: Text("Sent"));
                           }
                         }
+                        return Text("");
                       },
                     ),
                   ),
