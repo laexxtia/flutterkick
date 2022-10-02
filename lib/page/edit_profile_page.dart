@@ -78,15 +78,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 style: TextStyle(color: Colors.black),
               ),
             ),
-            // FloatingActionButton(
-            //   child: Text('Next', style: TextStyle(fontSize: 15.0),),
-            //   onPressed: () {
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(builder: (context) => MainPage()),
-            //     );
-            //   },
-            // ),
           ],
         ),
       ),

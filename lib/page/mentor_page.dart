@@ -104,6 +104,14 @@ class _Mentor_PageState extends State<Mentor_Page> {
                             ],
                           )
                         );
+                      } else {
+                        return ListTile(
+                            tileColor: Colors.white,
+                            title: Text(user.name),
+                            subtitle: Text("Student"),
+                            leading: CircleAvatar(backgroundImage: NetworkImage(user.imagePath)),
+                            trailing: Text("Accepted"),
+                        );
                       }
                       return Text("");
                     },
