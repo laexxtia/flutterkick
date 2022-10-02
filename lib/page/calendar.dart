@@ -4,15 +4,6 @@ import 'package:flutter/material.dart';
 class Calendar extends StatefulWidget {
   const Calendar({super.key});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   @override
   State<Calendar> createState() => _CalendarState();
 }
@@ -40,25 +31,25 @@ List<Meeting> _getDataSource() {
   final List<Meeting> meetings = <Meeting>[];
   final DateTime today = DateTime.now();
   final DateTime startTime =
-  DateTime(today.year, today.month, today.day, 9, 0, 0);
+  DateTime(today.year, today.month, today.day, 10, 0, 0);
   final DateTime endTime = startTime.add(const Duration(hours: 48));
 
-  final startTime1 = DateTime(2022, 9, 20);
+  final startTime1 = DateTime(2022, 10, 20);
   final endTime1 = startTime1.add(const Duration(hours: 2));
 
-  final startTime3 = DateTime(2022, 9, 6);
+  final startTime3 = DateTime(2022, 10, 6);
   final endTime3 = startTime3.add(const Duration(hours: 2));
 
-  final startTime2 = DateTime(2022, 9, 1);
+  final startTime2 = DateTime(2022, 10, 1);
   final endTime2= startTime3.add(const Duration(hours: 2));
 
-  final startTime4 = DateTime(2022, 9, 12);
+  final startTime4 = DateTime(2022, 10, 12);
   final endTime4 = startTime1.add(const Duration(hours: 2));
 
-  final startTime5 = DateTime(2022, 10, 1);
+  final startTime5 = DateTime(2022, 11, 1);
   final endTime5 = startTime.add(const Duration(hours: 2));
 
-  final startTime6 = DateTime(2022, 10, 3);
+  final startTime6 = DateTime(2022, 11, 3);
   final endTime6 = startTime5.add(const Duration(hours: 160));
 
   meetings.add(Meeting(
