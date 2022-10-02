@@ -17,10 +17,10 @@ We are a group of SMU students under the Google Ignite 2022 Program, trying to s
 <br/>
 
 ## Problem Statement: 
-We have selected *#10 Reduced Inequalities* & *#8 Decent Work and Economic Growth* as two of the 17 UN Sustainable Development Goals
+We have selected *#10 Reduced Inequalities* as one of the 17 UN Sustainable Development Goals
 <br/> <br/>
 <img src="https://user-images.githubusercontent.com/61011188/192708066-791da16e-d2af-4ab1-8c98-563ed457ed2a.png" width="100px"/>
-<img src="https://user-images.githubusercontent.com/61011188/193455608-8a84c4b0-a142-47ce-9feb-4671bb436a7b.png" width="100px"/>
+<!--<img src="https://user-images.githubusercontent.com/61011188/193455608-8a84c4b0-a142-47ce-9feb-4671bb436a7b.png" width="100px"/>-->
 
 
 <br/>
