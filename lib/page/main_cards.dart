@@ -136,7 +136,12 @@ class _MainPageState extends State<MainPage> {
           child: Icon(Icons.star, color: Colors.blue, size: 32),
           onPressed: () {
             final provider = Provider.of<CardProvider>(context, listen: false);
-            provider.superLike();
+            for(var i = 0; i < userDetails.length; i++) {
+              if (i == userDetails.length - 1) {
+                setData(userDetails[i]);
+                provider.superLike();
+              }
+            }
           },
         ),
         ElevatedButton(
@@ -281,7 +286,7 @@ class _MentorCardState extends State<MentorCard> {
       },
       onPanEnd: (details) async {
         final provider = Provider.of<CardProvider>(context, listen: false);
-        if (provider.endPosition(context) == "YES") {
+        if (provider.endPosition(context)) {
           for (var i = 0; i < userDetails.length; i++) {
             if (i == userDetails.length - 1) {
               widget.setData(userDetails[i]);

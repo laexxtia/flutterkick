@@ -62,7 +62,7 @@ class CardProvider extends ChangeNotifier {
   endPosition(BuildContext context) {
     _isDragging = false;
     notifyListeners();
-    String check_status = "";
+    bool swipedYes = false;
 
     final status = getStatus(force: true);
 
@@ -72,18 +72,18 @@ class CardProvider extends ChangeNotifier {
 
     switch (status) {
       case CardStatus.like:
-        check_status = like();
+        swipedYes = like();
         break;
       case CardStatus.dislike:
-        dislike();
+        swipedYes = dislike();
         break;
       case CardStatus.superLike:
-        superLike();
+        swipedYes = superLike();
         break;
       default:
         resetPosition();
     }
-    return check_status;
+    return swipedYes;
   }
 
   void resetPosition() {
@@ -131,12 +131,13 @@ class CardProvider extends ChangeNotifier {
 
   }
 
-  void dislike() {
+  dislike() {
     _angle = -20;
     _position -= Offset(2 * _screenSize.width, 0);
     _nextCard();
 
     notifyListeners();
+    return false;
   }
 
   like() {
@@ -144,15 +145,15 @@ class CardProvider extends ChangeNotifier {
     _position += Offset(2 * _screenSize.width, 0);
     _nextCard();
     notifyListeners();
-    return "YES";
+    return true;
   }
 
-  void superLike() {
+  superLike() {
     _angle = 0;
     _position -= Offset(0, _screenSize.height);
     _nextCard();
-
     notifyListeners();
+    return true;
   }
 
   Future _nextCard() async {
