@@ -21,7 +21,7 @@ class _CurrProfileScreenState extends State<CurrProfileScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: Text("Profile"),
+        title: Text("PROFILE"),
         actions: [
           calendarLogo(),
         ],

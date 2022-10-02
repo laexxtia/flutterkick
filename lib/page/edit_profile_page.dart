@@ -21,7 +21,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
       builder: (context) => Scaffold(
         appBar: AppBar(
           title: Text(
-            "Profile Creation",
+            "PROFILE CREATION",
             style: GoogleFonts.roboto(
               textStyle: TextStyle(),
               fontWeight: FontWeight.bold,

@@ -45,7 +45,7 @@ class _Mentor_PageState extends State<Mentor_Page> {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           centerTitle: true,
-          title: Text("Mentee's Requests"),
+          title: Text("MENTEE'S REQUESTS"),
           backgroundColor: Colors.transparent,
           leading: IconButton(
             icon: Icon(Icons.logout),

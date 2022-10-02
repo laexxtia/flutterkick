@@ -56,7 +56,7 @@ class _ListViewHomeState extends State<ListViewHome> {
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: Colors.transparent,
-          title: Text("Matches"),
+          title: Text("MATCHES"),
         ),
         backgroundColor: const Color(0xfff3e3fb),
         body: Container (
