@@ -53,29 +53,20 @@ Clone the repo by following either of the 3 methods:
 <br/>
 
 - Copy repo link
+  - Open up Terminal/CMD and change to the directory you wish to save the folder
+  
+    `cd ~/Documents/Flutterkick/`
+
+
+  - Next, clone the repo by running the following command
+
+    `git clone https://github.com/laexxtia/flutterkick.git`
+
 - Open with Github Desktop
-- Download ZIP folder)
+- Download ZIP folder
 <img width="563" alt="Screenshot 2022-10-01 at 11 02 36 PM" src="https://user-images.githubusercontent.com/61011188/193415821-fd4a4232-7ec1-459d-8aea-f3670efe5f3f.png">
 
-<br/>
-
-#### Option 1. Copy repo link
-Open up Terminal/CMD and change to the directory you wish to save the folder
-</br>
-`cd ~/Documents/Flutterkick/`
-</br>
-Next, clone the repo by running the following command
-`git clone https://github.com/laexxtia/flutterkick.git`
-
-<br/>
-
-#### Option 2. Github Desktop
-
-<br/>
-
-#### Option 3. Download Zip
-
-<br/>
+<br/><br/>
 
 ### Step 2: Open Android Studio
 After following either of the 3 options, open up Android Studio. Select *Open* and choose the folder you've cloned previously
