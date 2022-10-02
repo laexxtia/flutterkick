@@ -34,7 +34,7 @@ class _ListViewHomeState extends State<ListViewHome> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: Text("Matches"),
+          title: Text("MATCHES"),
         ),
         backgroundColor: const Color(0xfff3e3fb),
         body: Container (
