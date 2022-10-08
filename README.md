@@ -6,6 +6,7 @@
 - [Our Solution](#our-solution) <a name="our-solution"/>  
 - [Team Members](#team-members) <a name="team-members"/>   
 - [Task Delegation](#task-delegation) <a name="task-delegation"/>
+- [Our App](#our-app) <a name="our-app"/>
 - [Guide to run our App on Android Studio](#guide-to-run-on-android-studio) <a name="guide-to-run-on-android-studio"/>  
 - [References](#references) <a name="references"/>    
 
@@ -46,6 +47,16 @@ Huei Ming <br />Cassandra <br />Abiya <br />Laetitia <br />Rachel
 - Profile Page - Laetitia
 
 <br/>
+
+## Our App
+### Mentee's POV
+https://user-images.githubusercontent.com/61011188/194222101-76196920-ec31-4aa1-88ba-0f85bbce9677.mp4
+
+### Mentor's POV
+https://user-images.githubusercontent.com/61011188/194222094-1a350f88-5ea9-42a7-8649-12441c22c1d0.mp4
+
+<br/>
+
 
 ## Guide to run our App on Android Studio:
 ### Step 1: Clone Repo
